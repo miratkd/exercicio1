@@ -13,6 +13,8 @@ import com.LMira.exercicioProposto.entities.Client;
 import com.LMira.exercicioProposto.repositories.ClientRepository;
 
 
+
+
 @Service
 public class ClientService {
 	
@@ -32,4 +34,26 @@ public class ClientService {
 		return new ClientDTO(entity);
 	}
 
+	@Transactional
+	public ClientDTO insert(ClientDTO dto) {
+		Client entity = new Client(dto);
+		entity = repository.save(entity);
+		return new ClientDTO(entity);
+	}
+	
+	@Transactional
+	public ClientDTO update(Long id,ClientDTO dto) {
+		
+			Client entity = new Client(dto);
+			entity.setId(repository.getOne(id).getId());
+			entity = repository.save(entity);
+			return new ClientDTO(entity);
+		
+	}
+	
+	public void delete(Long id) {
+		
+			repository.deleteById(id);
+		
+	}
 }
