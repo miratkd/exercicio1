@@ -1,0 +1,10 @@
+package com.LMira.exercicioProposto.servicies.esceptions;
+
+public class ResourceNotFoundException extends RuntimeException {
+	private static final long serialVersionUID = 1L;
+
+	public ResourceNotFoundException (String msg) {
+		super(msg);
+		
+	}
+}
